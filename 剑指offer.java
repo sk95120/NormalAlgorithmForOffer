@@ -186,3 +186,94 @@ public ArrayList<ArrayList<Integer>> FindContinuousSequence(int num){
 	}
 	return arrayList;
 }
+# 42.1 左移动k位
+思路：三次旋转拼接
+public class Solution {
+    public String LeftRotateString(String str,int n) {
+        if(str ==null || str.length()==0){
+            return str ;
+        }
+        StringBuffer s1 = new StringBuffer(str.substring(0,n));
+        StringBuffer s2 = new StringBuffer(str.substring(n,str.length()));
+        s2.append(s1);
+        return s2.toString();
+    }
+}
+
+#42 翻转字符串
+public class Solution {
+    public String ReverseSentence(String str) {
+        if(str ==null || str.length() == 0){
+            return str ;
+        }
+        if(str.trim().length()==0){
+            return str;
+        }
+        StringBuilder sb = new StringBuilder();
+        String re = reverse(str);
+        String[] s = re.split(" ");
+        for(int i = 0 ; i< s.length -1 ; i++){
+            sb.append(reverse(s[i])+" ");
+        }
+        sb.append(reverse(s[s.length-1]));
+        return String.valueOf(sb);
+    }
+    public String reverse(String str) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = str.length() - 1; i >= 0 ; i--) {
+            sb.append(str.charAt(i));
+        }
+        return String.valueOf(sb);
+    }
+}
+#44 扑克牌顺子
+import java.util.*;
+public boolean isContinuous(int [] numbers) {
+	if (numbers == null || numbers.length == 0)
+		return false;
+	int count = 0;
+	int diff = 0;
+	Arrays.sort(numbers);
+	for (int i = 0; i < numbers.length - 1; i++) {
+		if (numbers[i] == 0) {
+			count++;
+			continue;
+		}
+		if (numbers[i] != numbers[i+1]) {
+			diff += numbers[i+1] - numbers[i] - 1;
+		} else {
+			return false;
+		}
+	}
+	if (diff <= count){
+		return true;
+	}
+
+	return false;
+}
+#45 约瑟夫环 圆圈最后剩下的数字
+利用循环链表实现
+import java.util.*;
+public class Solution {
+    public int LastRemaining_Solution(int n, int m) {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        int bt = 0 ;
+
+        for( int i = 0 ; i<n ; i++ ){
+            list.add(i);
+        }
+        while(list.size()>1){
+            bt = (bt + m - 1) % list.size();
+            list.remove(bt);
+        }	
+        return list.size() == 1 ?list.get(0) : -1 ;
+        }
+}
+#46 1+2+...+n 的和 
+public class Solution {
+    public int Sum_Solution(int n) {
+        int sum = n ;
+        boolean result = (n>0)&&((sum += Sum_Solution(n-1))>0) ;
+        return sum;
+    }
+}
