@@ -1,9 +1,1 @@
-# 把代码同步至本地
-
-## git status
-## git init
-## git remote add https://github.com/sk95120/-offer.git
-## git pull  < --rebase origin master >
-## git add .
-## git commit -m "提交信息。"
-## git push <-f|-u> origin master
+### 2019年春天，想换一份更有挑战性、对职业的长期发展有帮助的工作。那个6月面试了一些公司，这个文件夹收录了笔试中的算法题。还有《剑指Offer》这本书，里面一些不错的code。于是有了这个工程。
